@@ -1,6 +1,7 @@
 # Tower.debug = Tower.env == 'development'
 
 App.bootstrap = (data) ->
+  App.IrcBot.load(data.ircBots) if data.ircBots
   # Optimized rendering (force right at bottom of DOM, before DOM ready)
   Ember.Handlebars.bootstrap(Ember.$(document))
 

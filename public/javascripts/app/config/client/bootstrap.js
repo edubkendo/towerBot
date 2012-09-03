@@ -1,6 +1,9 @@
 (function() {
 
   App.bootstrap = function(data) {
+    if (data.ircBots) {
+      App.IrcBot.load(data.ircBots);
+    }
     Ember.Handlebars.bootstrap(Ember.$(document));
     Tower.NetConnection.transport = Tower.StoreTransportAjax;
     if (Tower.env === 'development') {

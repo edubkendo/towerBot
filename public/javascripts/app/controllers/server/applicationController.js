@@ -57,9 +57,17 @@
     });
 
     __defineProperty(ApplicationController,  "bootstrap", function(callback) {
-      var data;
+      var data,
+        _this = this;
       data = this.bootstrapData = {};
-      return _.series([], callback);
+      return _.series([
+        function(next) {
+          return App.IrcBot.all(function(error, ircBots) {
+            data.ircBots = ircBots;
+            return next();
+          });
+        }
+      ], callback);
     });
 
     return ApplicationController;

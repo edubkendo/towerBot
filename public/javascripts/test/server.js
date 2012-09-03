@@ -8,7 +8,11 @@
 
   global.expect = chai.expect;
 
-  global.sinon = require('sinon');
+  global.should = chai.should();
+
+  global.sinon = require("sinon");
+
+  global.sinonChai = require("sinon-chai");
 
   global.async = require('async');
 
@@ -31,10 +35,22 @@
 
   global.destroy = _.destroy;
 
+  global.Faker = require('Faker');
+
+  global.net = require('net');
+
   global.app = Tower.Application.instance();
 
   before(function(done) {
-    return app.initialize(done);
+    app.initialize(done);
+    chai.use(sinonChai);
+    return Tower.Factory.define('ircBot', function() {
+      return {
+        channel: Faker.Lorem.words(),
+        server: Faker.Lorem.words(),
+        name: Faker.Lorem.words()
+      };
+    });
   });
 
   beforeEach(function(done) {

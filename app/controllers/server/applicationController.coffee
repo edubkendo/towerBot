@@ -18,4 +18,7 @@ class App.ApplicationController extends Tower.Controller
     # for every model you add, you can add it to the bootstrap
     # dataset by using this async helper.
     _.series [
+      (next) => App.IrcBot.all (error, ircBots) =>
+        data.ircBots = ircBots
+        next()
     ], callback
