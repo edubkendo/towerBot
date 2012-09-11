@@ -1,0 +1,1 @@
+App.gisted = require 'gist'

@@ -44,11 +44,23 @@
   before(function(done) {
     app.initialize(done);
     chai.use(sinonChai);
-    return Tower.Factory.define('ircBot', function() {
+    Tower.Factory.define('ircBot', function() {
       return {
         channel: Faker.Lorem.words(),
         server: Faker.Lorem.words(),
         name: Faker.Lorem.words()
+      };
+    });
+    Tower.Factory.define('message', function() {
+      return {
+        user: Faker.Internet.userName(),
+        body: Faker.Lorem.sentence()
+      };
+    });
+    return Tower.Factory.define('gist', function() {
+      return {
+        text: Faker.Lorem.sentence(),
+        gitHubUrl: Faker.Internet.domainWord()
       };
     });
   });

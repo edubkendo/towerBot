@@ -62,6 +62,16 @@
       data = this.bootstrapData = {};
       return _.series([
         function(next) {
+          return App.Gist.all(function(error, gists) {
+            data.gists = gists;
+            return next();
+          });
+        }, function(next) {
+          return App.Message.all(function(error, messages) {
+            data.messages = messages;
+            return next();
+          });
+        }, function(next) {
           return App.IrcBot.all(function(error, ircBots) {
             data.ircBots = ircBots;
             return next();

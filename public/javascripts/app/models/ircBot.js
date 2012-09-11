@@ -48,11 +48,21 @@
       client = new App.irc.Client(server, name, {
         channels: [channel]
       });
-      return client.addListener('join', function(channel, who) {
+      client.addListener('join', function(channel, who) {
         this.channel = channel;
         if (who !== "TowerBot") {
           return client.say(channel, "Hello " + who + "! If you have a question, please be patient! It may take some time before someone sees it, but we will try our best to help you.");
         }
+      });
+      return client.addListener('message', function(from, to, words) {
+        var message;
+        console.log("" + from + " => " + to + ": " + message + " \n");
+        message = App.Message["new"]();
+        message.setProperties({
+          body: words,
+          user: from
+        });
+        return message.save();
       });
     });
 

@@ -10,6 +10,16 @@ module.exports =
       '/templates'
       '/app/views/client/layout/application'
       '/app/models/ircBot'
+      '/app/models/message'
+      '/app/views/client/messages/form'
+      '/app/views/client/messages/index'
+      '/app/views/client/messages/show'
+      '/app/controllers/client/messagesController'
+      '/app/models/gist'
+      '/app/views/client/gists/form'
+      '/app/views/client/gists/index'
+      '/app/views/client/gists/show'
+      '/app/controllers/client/gistsController'
     ]
 
     lib: [
@@ -51,6 +61,8 @@ module.exports =
       '/vendor/javascripts/chai'
       '/test/client'
       '/test/models/ircBotTest'
+      '/test/models/messageTest'
+      '/test/models/gistTest'
     ]
 
   stylesheets:

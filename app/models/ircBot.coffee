@@ -18,3 +18,12 @@ class App.IrcBot extends Tower.Model
     client.addListener 'join', (@channel, who) ->
       unless who is "TowerBot"
         client.say channel, "Hello #{who}! If you have a question, please be patient! It may take some time before someone sees it, but we will try our best to help you."
+
+    client.addListener 'message', (from, to, words) ->
+      console.log "#{from} => #{to}: #{message} \n"
+      message = App.Message.new()
+      message.setProperties(
+        body: words
+        user: from
+        )
+      message.save()         

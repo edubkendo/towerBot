@@ -1,6 +1,12 @@
 (function() {
 
   App.bootstrap = function(data) {
+    if (data.gists) {
+      App.Gist.load(data.gists);
+    }
+    if (data.messages) {
+      App.Message.load(data.messages);
+    }
     if (data.ircBots) {
       App.IrcBot.load(data.ircBots);
     }

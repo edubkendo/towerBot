@@ -17,6 +17,8 @@
       edit: "Editing %{name}"
     },
     links: {
+      gists: "Gists",
+      messages: "Messages",
       "default": "%{name}",
       home: "Home",
       docs: "Docs"

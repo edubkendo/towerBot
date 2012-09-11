@@ -30,6 +30,15 @@ before (done) ->
     server: Faker.Lorem.words()
     name: Faker.Lorem.words()  
 
+  Tower.Factory.define 'message', ->
+    user: Faker.Internet.userName()
+    body: Faker.Lorem.sentence()
+
+  Tower.Factory.define 'gist', ->
+    text: Faker.Lorem.sentence()
+    gitHubUrl: Faker.Internet.domainWord()
+
+
 # Run this before each action
 beforeEach (done) ->
   if Tower.isClient
